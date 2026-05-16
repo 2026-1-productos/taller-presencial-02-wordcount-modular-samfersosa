@@ -1,6 +1,9 @@
 def split_into_words(lines):
-    """Split lines into individual words and clean punctuation."""
+    """Split preprocessed lines into individual words, removing punctuation."""
     words = []
     for line in lines:
-        words.extend(word.strip(",.!?") for word in line.split())
+        for word in line.split():
+            cleaned = word.strip(",.!?;:")
+            if cleaned:
+                words.append(cleaned)
     return words
